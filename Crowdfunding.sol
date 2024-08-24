@@ -47,4 +47,11 @@ contract CrownFunding {
 
         Campaign storage campaign = campaigns[campaignId];
 
+        require(msg.value > 0, "Donation must be greater than 0");
+        require(block.timestamp < campaign.deadline, "Campaign is over");
+
+        event donate (address benefactor, string donated);
     }
+
+
+    function endCampaign (uint campaignId) public 
